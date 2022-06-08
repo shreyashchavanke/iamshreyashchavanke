@@ -1,0 +1,494 @@
+#################### library############################
+library(factoextra)
+library(NbClust)
+library(ggplot2)
+library(clv)
+library(dplyr)
+library(foreign)
+################## file ###############################
+df<-read.csv(file.choose(),header = TRUE)
+df<-as_tibble(df)
+
+###############################2011################################################
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2011)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,2)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,2)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=2,border = "blue")
+rect.hclust
+
+
+
+
+########################################2012##################################################
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2012)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,2)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,2)
+setk$cluster
+plot(d1,col=setk$cluster)
+plot(data_clustered,col=set$data_clustered)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=2,border = "blue")
+rect.hclust
+
+
+
+#########################################2013#############################################
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2013)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 3,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,3)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,3)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=3,border = "blue")
+rect.hclust
+
+
+################################################2014#####################################3
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2014)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,2)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,2)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=2,border = "blue")
+rect.hclust
+
+
+
+
+
+################################################2015#####################################3
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2015)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,2)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,2)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=2,border = "blue")
+rect.hclust
+
+
+
+###########################################2016#######################################
+
+
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2016)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,3)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,3)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=3,border = "blue")
+rect.hclust
+
+
+
+
+################################################2017#####################################3
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2017)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,3)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,3)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=3,border = "blue")
+rect.hclust
+
+
+
+################################################2018#####################################3
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2018)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,3)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,3)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=3,border = "blue")
+rect.hclust
+
+
+
+
+
+################################################2019#####################################3
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2019)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,2)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,2)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=2,border = "blue")
+rect.hclust
+
+
+
+
+
+
+################################################2020#####################################3
+
+
+head(df)
+dim(df)
+names(df)
+d<-df%>%filter(year==2020)
+d
+d1<-subset(d,select = -c(water.stations,year,PS,TS,QV2M,WS2M,pre,post))
+d1
+str(d1)
+####Standardization
+mean.vect<-apply(d1,2,mean)
+sd.vect<-apply(d1,2,sd)
+z<-scale(d1,mean.vect,sd.vect)
+hist(z)
+
+##################hubert index#####################
+df1<-NbClust(d1,min.nc = 2,max.nc =10,method="kmeans")
+df1
+
+#################barplot for optimal number of cluster #########
+barplot(table(df1$Best.nc[1,]),col="blue")
+###################dist###########################
+d2<-dist(z)        
+d2
+
+################## k mean clustering####################
+
+data_clustered<-kmeans(d2,4)
+data_clustered
+data_clustered<-data_clustered$cluster
+data_clustered
+setk<-kmeans(d1,4)
+setk$cluster
+plot(d1,col=setk$cluster)
+
+################### dendogram ####################
+h.fit<-hclust(d2)
+h.fit
+
+################## in one line  dendogram ###########
+plot(h.fit,hang = -1)
+rect.hclust(h.fit,k=4,border = "blue")
+rect.hclust
+
+
